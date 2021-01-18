@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Youtube!{% endblock %}
+
+{% block body %}
+    <div class="row">
+    {% for youtube in youtubes %}
+      <div class="col">
+        <div class="card mt-5" style="width: 18rem; box-shadow: black;background:black;text-align: center;">
+            <a href="{{ path('app_play',{'id': youtube.id}) }}" ><img src="{{ youtube.url | youtube_thumbnail }}" class="card-img-top"  alt="never"></a>
+            <div class="card-body" style="color: white">
+                <h5 class="card-title">{{ youtube.nom }}</h5>
+            </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    <div class="mb-5 mt-5" id="ajouterVideo">
+        <h2>Ajouter une vidéo :</h2>
+        {{ form(formYou) }}
+    </div>
+
+
+{% endblock %}
